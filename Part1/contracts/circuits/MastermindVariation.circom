@@ -1,6 +1,9 @@
 pragma circom 2.0.0;
 
 // [assignment] implement a variation of mastermind from https://en.wikipedia.org/wiki/Mastermind_(board_game)#Variation as a circuit
+include "../../node_modules/circomlib/circuits/comparators.circom";
+include "../../node_modules/circomlib/circuits/bitify.circom";
+include "../../node_modules/circomlib/circuits/poseidon.circom";
 
 template MastermindVariation() {
 // Public inputs
@@ -97,4 +100,4 @@ template MastermindVariation() {
     pubSolnHash === solnHashOut;
 }
 
-component main = MastermindVariation();
+component main {public [pubGuessA, pubGuessB, pubGuessC, pubGuessD, pubNumRed, pubNumWhite, pubSolnHash]} = MastermindVariation();
